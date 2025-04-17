@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if ! [ -S "$1" ]; then
+	echo "Connects telnet client into unix socket"
+	echo
+	echo "$0 /path/to/socket"
+	echo
+	exit 1
+fi
+
+CONNECT_PATH="$1" LD_PRELOAD=$HOME/.local/lib/unixcon.so telnet 1
